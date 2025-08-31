@@ -1,6 +1,0 @@
-# Cloudflare Pages重定向配置
-/creators /creators.html 200
-/creators/ /creators.html 200
-/api/creators/search /.netlify/functions/creators-search 200
-/api/trends /.netlify/functions/trends 200
-/api/countries /countries.json 200
