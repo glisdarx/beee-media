@@ -14,7 +14,7 @@
     
     <!-- 创作者搜索页面 -->
     <url>
-        <loc>https://beeemedia.com/creators.html</loc>
+        <loc>https://beeemedia.com/creators</loc>
         <lastmod>2024-08-31</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>

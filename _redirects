@@ -3,8 +3,9 @@
 /api/trends /.netlify/functions/trends 200
 /api/countries /countries.json 200
 
-# 页面重定向
+# 页面重定向 - 简洁URL
 /creators /creators.html 200
+/creators/ /creators.html 200
 
 # SPA fallback
 /* /index.html 200
