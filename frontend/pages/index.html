@@ -133,9 +133,9 @@
                 <a href="#about" class="nav-link">关于我们</a>
                 <a href="#contact" class="nav-link">联系我们</a>
             </div>
-            <div class="nav-actions">
-                <button class="btn-secondary">免费试用</button>
-                <button class="btn-primary">立即体验</button>
+            <div class="nav-actions" id="navActions">
+                <button class="btn-secondary" onclick="goToAuth()">登录</button>
+                <a href="./creators.html" class="btn-primary">立即体验</a>
             </div>
             <div class="nav-toggle">
                 <span class="bar"></span>
@@ -662,5 +662,54 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // 认证相关功能
+        function goToAuth() {
+            window.location.href = './auth.html';
+        }
+        
+        // 检查用户是否已登录
+        function checkAuthStatus() {
+            const token = localStorage.getItem('auth_token');
+            const userData = localStorage.getItem('user_data');
+            
+            if (token && userData) {
+                const user = JSON.parse(userData);
+                updateNavForLoggedInUser(user);
+            }
+        }
+        
+        // 更新导航栏显示已登录用户
+        function updateNavForLoggedInUser(user) {
+            const navActions = document.getElementById('navActions');
+            if (navActions) {
+                navActions.innerHTML = `
+                    <div class="user-menu">
+                        <img src="${user.avatar_url || '/assets/default-avatar.png'}" alt="${user.name}" class="user-avatar">
+                        <span class="user-name">${user.name}</span>
+                        <div class="user-dropdown">
+                            <a href="./creators.html">创作者搜索</a>
+                            <a href="./dashboard.html">仪表板</a>
+                            <a href="./profile.html">个人资料</a>
+                            <a href="#" onclick="logout()">退出登录</a>
+                        </div>
+                    </div>
+                    <a href="./creators.html" class="btn-primary">开始搜索</a>
+                `;
+            }
+        }
+        
+        // 退出登录
+        function logout() {
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('user_data');
+            window.location.reload();
+        }
+        
+        // 页面加载时检查认证状态
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthStatus();
+        });
+    </script>
 </body>
 </html>

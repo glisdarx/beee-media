@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册 - Beee Media</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="登录或注册 Beee Media 账户，开始您的AI驱动营销之旅">
+    <meta name="keywords" content="登录,注册,Beee Media,AI营销,TikTok,创作者搜索">
+    <meta name="author" content="Beee Media">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://beeemedia.com/auth">
+    <meta property="og:title" content="登录注册 - Beee Media">
+    <meta property="og:description" content="登录或注册 Beee Media 账户，开始您的AI驱动营销之旅">
+    <meta property="og:site_name" content="Beee Media">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Sign-In -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* 背景装饰 */
+        .bg-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* 主容器 */
+        .auth-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+        }
+        
+        /* 标题 */
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .auth-logo i {
+            font-size: 2.5rem;
+            color: #FFD700;
+        }
+        
+        .auth-logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .auth-subtitle {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        /* 切换按钮 */
+        .auth-toggle {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+        
+        .toggle-btn.active {
+            background: white;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 表单样式 */
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #FFD700;
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+        
+        /* 错误消息 */
+        .error-message {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        /* 成功消息 */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+        }
+        
+        .btn-google {
+            background: white;
+            color: #333;
+            border: 2px solid #e9ecef;
+        }
+        
+        .btn-google:hover {
+            border-color: #dadce0;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        /* 加载状态 */
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .btn.loading .loading {
+            display: block;
+        }
+        
+        .btn.loading span {
+            display: none;
+        }
+        
+        /* 分隔线 */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e9ecef;
+            margin: 0 15px;
+        }
+        
+        /* 链接 */
+        .auth-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .auth-link a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* 返回按钮 */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .back-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 480px) {
+            .auth-container {
+                margin: 10px;
+                padding: 30px 25px;
+            }
+            
+            .auth-logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .auth-logo i {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Google Sign-In 按钮自定义 */
+        .g_id_signin {
+            width: 100% !important;
+        }
+        
+        .g_id_signin iframe {
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration"></div>
+    
+    <button class="back-btn" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    
+    <div class="auth-container">
+        <div class="auth-header">
+            <div class="auth-logo">
+                <i class="fas fa-bee"></i>
+                <h1>Beee Media</h1>
+            </div>
+            <p class="auth-subtitle">AI驱动的营销增长平台</p>
+        </div>
+        
+        <!-- 切换按钮 -->
+        <div class="auth-toggle">
+            <button class="toggle-btn active" onclick="showLogin()">登录</button>
+            <button class="toggle-btn" onclick="showRegister()">注册</button>
+        </div>
+        
+        <!-- 消息显示 -->
+        <div id="successMessage" class="success-message"></div>
+        <div id="errorMessage" class="error-message"></div>
+        
+        <!-- 登录表单 -->
+        <form id="loginForm" class="auth-form active">
+            <div class="form-group">
+                <label class="form-label">邮箱地址</label>
+                <input type="email" class="form-input" id="loginEmail" required placeholder="请输入您的邮箱">
+                <div class="error-message" id="loginEmailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">密码</label>
+                <input type="password" class="form-input" id="loginPassword" required placeholder="请输入您的密码">
+                <div class="error-message" id="loginPasswordError"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="loginBtn">
+                <div class="loading"></div>
+                <span>登录</span>
+            </button>
+            
+            <div class="divider">或</div>
+            
+            <!-- Google 登录按钮占位符 -->
+            <div id="g_id_onload"
+                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                 data-callback="handleGoogleLogin"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-width="100%"></div>
+            
+            <div class="auth-link">
+                <a href="#" onclick="showForgotPassword()">忘记密码？</a>
+            </div>
+        </form>
+        
+        <!-- 注册表单 -->
+        <form id="registerForm" class="auth-form">
+            <div class="form-group">
+                <label class="form-label">姓名</label>
+                <input type="text" class="form-input" id="registerName" required placeholder="请输入您的姓名">
+                <div class="error-message" id="registerNameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">邮箱地址</label>
+                <input type="email" class="form-input" id="registerEmail" required placeholder="请输入您的邮箱">
+                <div class="error-message" id="registerEmailError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">密码</label>
+                <input type="password" class="form-input" id="registerPassword" required placeholder="至少6位字符">
+                <div class="error-message" id="registerPasswordError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">确认密码</label>
+                <input type="password" class="form-input" id="registerPasswordConfirm" required placeholder="请再次输入密码">
+                <div class="error-message" id="registerPasswordConfirmError"></div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" id="registerBtn">
+                <div class="loading"></div>
+                <span>注册账户</span>
+            </button>
+            
+            <div class="divider">或</div>
+            
+            <button type="button" class="btn btn-google" onclick="handleGoogleRegister()">
+                <i class="fab fa-google"></i>
+                <span>使用 Google 注册</span>
+            </button>
+        </form>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>

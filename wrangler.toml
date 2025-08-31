@@ -7,14 +7,3 @@ pages_build_output_dir = "."
 # 环境变量
 [vars]
 TIKHUB_API_KEY = "w7MRRTtG50I0nQQRwUXvkCUdwyZXk5mI4alf2QvjknZZ4XIzYNAv/kK8AA=="
-
-# 路由配置
-[[redirects]]
-from = "/creators"
-to = "/creators.html"
-status = 200
-
-[[redirects]]
-from = "/creators/"
-to = "/creators.html"
-status = 200

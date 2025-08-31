@@ -9,6 +9,12 @@ let currentSortOrder = 'desc';
 
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
+    // 检查认证状态
+    if (!checkAuthStatus()) {
+        showAuthRequiredMessage();
+        return;
+    }
+    
     initializeCreatorsPage();
 });
 
@@ -903,4 +909,146 @@ function playVideoPreview(videoUrl, coverUrl, element) {
         }
     }
     document.addEventListener('keydown', handleEscKey);
+}
+
+// ================================
+// 认证相关功能
+// ================================
+
+// 检查认证状态
+function checkAuthStatus() {
+    const token = localStorage.getItem('auth_token');
+    const userData = localStorage.getItem('user_data');
+    
+    if (!token || !userData) {
+        return false;
+    }
+    
+    // 检查token是否过期（简单检查）
+    try {
+        const user = JSON.parse(userData);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}
+
+// 获取认证token
+function getAuthToken() {
+    return localStorage.getItem('auth_token');
+}
+
+// 获取用户数据
+function getUserData() {
+    const userData = localStorage.getItem('user_data');
+    return userData ? JSON.parse(userData) : null;
+}
+
+// 显示需要认证的消息
+function showAuthRequiredMessage() {
+    const container = document.querySelector('.container');
+    if (container) {
+        container.innerHTML = `
+            <div class="auth-required-message">
+                <div class="auth-card">
+                    <div class="auth-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h2>需要登录</h2>
+                    <p>请先登录您的账户以使用创作者搜索功能</p>
+                    <div class="auth-actions">
+                        <a href="./auth.html" class="btn btn-primary">立即登录</a>
+                        <a href="./index.html" class="btn btn-secondary">返回首页</a>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .auth-required-message {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-height: 60vh;
+                    padding: 2rem;
+                }
+                
+                .auth-card {
+                    background: white;
+                    border-radius: 20px;
+                    padding: 3rem;
+                    text-align: center;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    max-width: 400px;
+                    width: 100%;
+                }
+                
+                .auth-icon {
+                    font-size: 3rem;
+                    color: #FFD700;
+                    margin-bottom: 1.5rem;
+                }
+                
+                .auth-card h2 {
+                    color: #333;
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                }
+                
+                .auth-card p {
+                    color: #666;
+                    margin-bottom: 2rem;
+                    line-height: 1.6;
+                }
+                
+                .auth-actions {
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+                
+                .auth-actions .btn {
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 10px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.3s ease;
+                }
+                
+                .auth-actions .btn-primary {
+                    background: linear-gradient(135deg, #FFD700, #FFA500);
+                    color: #333;
+                }
+                
+                .auth-actions .btn-secondary {
+                    background: transparent;
+                    color: #666;
+                    border: 2px solid #e9ecef;
+                }
+                
+                .auth-actions .btn:hover {
+                    transform: translateY(-2px);
+                }
+            </style>
+        `;
+    }
+}
+
+// 更新API调用以包含认证头
+function makeAuthenticatedRequest(url, options = {}) {
+    const token = getAuthToken();
+    
+    if (!token) {
+        throw new Error('No authentication token found');
+    }
+    
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        ...options.headers
+    };
+    
+    return fetch(url, {
+        ...options,
+        headers
+    });
 }

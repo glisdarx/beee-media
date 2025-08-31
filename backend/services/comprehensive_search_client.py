@@ -11,7 +11,14 @@ import time
 import re
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
-from config import TIKHUB_API_KEY, TIKHUB_BASE_URL
+import os
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
+
+TIKHUB_API_KEY = os.getenv('TIKHUB_API_KEY', 'w7MRRTtG50I0nQQRwUXvkCUdwyZXk5mI4alf2QvjknZZ4XIzYNAv/kK8AA==')
+TIKHUB_BASE_URL = os.getenv('TIKHUB_BASE_URL', 'https://api.tikhub.io')
 
 # 设置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

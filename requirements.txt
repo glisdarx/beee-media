@@ -1,4 +1,65 @@
-Flask==2.3.3
+# Flask 核心依赖
+Flask==3.0.0
 Flask-CORS==4.0.0
+Flask-Limiter==3.5.0
+Werkzeug==3.0.1
+
+# 数据库和ORM
+supabase==2.2.0
+psycopg2-binary==2.9.7
+
+# 认证和安全
+PyJWT==2.8.0
+bcrypt==4.1.2
+google-auth==2.24.0
+google-auth-oauthlib==1.1.0
+google-auth-httplib2==0.1.1
+
+# 邮件服务
+sendgrid==6.11.0
+
+# HTTP 客户端
 requests==2.31.0
+httpx==0.25.2
+
+# 数据处理
+pandas==2.1.4
+numpy==1.24.4
+
+# 验证和序列化
+marshmallow==3.20.1
+webargs==8.3.0
+
+# 缓存
+Flask-Caching==2.1.0
+redis==5.0.1
+
+# 异步支持
+asyncio==3.4.3
+aiofiles==23.2.1
+
+# 开发和调试工具
 python-dotenv==1.0.0
+gunicorn==21.2.0
+
+# 日志
+structlog==23.2.0
+
+# 文件处理
+Pillow==10.1.0
+
+# API 文档
+flasgger==0.9.7.1
+
+# 监控和性能
+sentry-sdk[flask]==1.38.0
+
+# 时间处理
+python-dateutil==2.8.2
+pytz==2023.3
+
+# CSV处理
+csv-diff==1.0
+
+# 环境配置
+environs==10.0.0
