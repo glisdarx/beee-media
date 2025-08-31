@@ -5,7 +5,7 @@ import sys
 import time
 
 # Cloudflare API配置
-API_TOKEN = "cd226a2bc1a1ff06d8408b7ef12df5b4"
+API_TOKEN = "ohZJC7hCB-7u60R8UcK44B_l36U2qzl7Lus727zH"
 ACCOUNT_EMAIL = "your-email@example.com"  # 需要您提供
 ZONE_NAME = "beeemedia.com"
 PROJECT_NAME = "beee-media"
