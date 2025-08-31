@@ -1,11 +1,6 @@
-# API重定向到Netlify Functions
+# Cloudflare Pages重定向配置
+/creators /creators.html 200
+/creators/ /creators.html 200
 /api/creators/search /.netlify/functions/creators-search 200
 /api/trends /.netlify/functions/trends 200
 /api/countries /countries.json 200
-
-# 页面重定向 - 简洁URL
-/creators /creators.html 200
-/creators/ /creators.html 200
-
-# SPA fallback
-/* /index.html 200
