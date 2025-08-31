@@ -1,0 +1,65 @@
+{
+  "keyword": "cursor",
+  "collection_time": "2025-08-29T18:37:45.216115",
+  "total_searches": 31,
+  "total_creators": 20,
+  "total_followers": 2029142,
+  "avg_followers": 101457.1,
+  "total_videos": 4294,
+  "total_likes": 48421262,
+  "avg_play_count": 48449.45,
+  "email_count": 1,
+  "active_creators": 18,
+  "top_creators": [
+    {
+      "nickname": "harke",
+      "unique_id": "harkeofficial",
+      "follower_count": 677468
+    },
+    {
+      "nickname": "Gazi",
+      "unique_id": "gazi.ai",
+      "follower_count": 648400
+    },
+    {
+      "nickname": "Nate",
+      "unique_id": "nate.b.jones",
+      "follower_count": 372211
+    },
+    {
+      "nickname": "Prompt Warrior",
+      "unique_id": "promptwarrior",
+      "follower_count": 114504
+    },
+    {
+      "nickname": "Today in AI",
+      "unique_id": "todayin_ai",
+      "follower_count": 44127
+    },
+    {
+      "nickname": "Deonna | AI & ChatGPT",
+      "unique_id": "deonnahodges",
+      "follower_count": 42303
+    },
+    {
+      "nickname": "Mokopuni 🐮🌱🤎",
+      "unique_id": "mokopuni.arts",
+      "follower_count": 41874
+    },
+    {
+      "nickname": "Coding World",
+      "unique_id": "rscoding123",
+      "follower_count": 19585
+    },
+    {
+      "nickname": "toxic",
+      "unique_id": "uht0xic",
+      "follower_count": 14826
+    },
+    {
+      "nickname": "CopyCoder",
+      "unique_id": "copycoderai",
+      "follower_count": 10631
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Beee Media - AI驱动的增长工作室",
+    "short_name": "Beee Media",
+    "description": "专业的AI驱动营销工具平台，提供TikTok创作者搜索、趋势分析、内容生成等服务",
+    "icons": [
+        {
+            "src": "/assets/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#FFD93D",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "start_url": "/",
+    "scope": "/",
+    "orientation": "portrait-primary",
+    "categories": ["business", "marketing", "productivity"],
+    "lang": "zh-CN",
+    "dir": "ltr"
+}

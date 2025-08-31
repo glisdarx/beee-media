@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创作者搜索 - Beee Media</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="creators-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-bee"></i>
+                </div>
+                <span class="logo-text">Beee Media</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="creators.html" class="nav-link active">创作者搜索</a>
+                <a href="#products" class="nav-link">产品</a>
+                <a href="#solutions" class="nav-link">解决方案</a>
+                <a href="#pricing" class="nav-link">定价</a>
+                <a href="#about" class="nav-link">关于我们</a>
+                <a href="#contact" class="nav-link">联系我们</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-secondary">免费试用</button>
+                <button class="btn-primary">立即体验</button>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="creators-main">
+        <!-- 页面头部 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="header-content">
+                    <h1 class="page-title">
+                        <i class="fas fa-search"></i>
+                        创作者搜索
+                    </h1>
+                    <p class="page-subtitle">
+                        通过视频关键词精准找到合适的创作者，支持多维度筛选和详细数据分析
+                    </p>
+                    <div class="header-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100万+</span>
+                            <span class="stat-label">创作者数据</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">58</span>
+                            <span class="stat-label">支持国家</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">实时</span>
+                            <span class="stat-label">数据更新</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索区域 -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-card">
+                    <div class="search-header">
+                        <h2><i class="fas fa-filter"></i> 高级搜索</h2>
+                        <p>输入关键词，设置筛选条件，精准找到目标创作者</p>
+                    </div>
+                    
+                    <form class="search-form" id="searchForm">
+                        <!-- 关键词搜索 -->
+                        <div class="form-group">
+                            <label for="searchKeyword">
+                                <i class="fas fa-key"></i>
+                                搜索关键词 *
+                            </label>
+                            <input 
+                                type="text" 
+                                id="searchKeyword" 
+                                name="searchKeyword" 
+                                placeholder="输入视频关键词，如：美食、旅行、科技..."
+                                required
+                            >
+                        </div>
+
+                        <!-- 筛选条件 -->
+                        <div class="filters-grid">
+                            <!-- 国家选择 -->
+                            <div class="form-group">
+                                <label for="country">
+                                    <i class="fas fa-globe"></i>
+                                    国家/地区
+                                </label>
+                                <select id="country" name="country">
+                                    <option value="">全部国家</option>
+                                    <option value="China">中国</option>
+                                    <option value="UnitedStates">美国</option>
+                                    <option value="Japan">日本</option>
+                                    <option value="SouthKorea">韩国</option>
+                                    <option value="UnitedKingdom">英国</option>
+                                    <option value="France">法国</option>
+                                    <option value="Germany">德国</option>
+                                    <option value="Canada">加拿大</option>
+                                    <option value="Australia">澳大利亚</option>
+                                    <option value="India">印度</option>
+                                    <option value="Brazil">巴西</option>
+                                    <option value="Russia">俄罗斯</option>
+                                    <option value="Italy">意大利</option>
+                                    <option value="Spain">西班牙</option>
+                                </select>
+                            </div>
+
+                            <!-- 粉丝数范围 -->
+                            <div class="form-group">
+                                <label for="followerRange">
+                                    <i class="fas fa-users"></i>
+                                    粉丝数范围
+                                </label>
+                                <select id="followerRange" name="followerRange">
+                                    <option value="">全部范围</option>
+                                    <option value="0-10000">1万以下</option>
+                                    <option value="10000-100000">1万-10万</option>
+                                    <option value="100000-1000000">10万-100万</option>
+                                    <option value="1000000-10000000">100万-1000万</option>
+                                    <option value="10000000-999999999">1000万以上</option>
+                                </select>
+                            </div>
+
+                            <!-- 语言设置 -->
+                            <div class="form-group">
+                                <label for="language">
+                                    <i class="fas fa-language"></i>
+                                    语言设置
+                                </label>
+                                <select id="language" name="language">
+                                    <option value="">全部语言</option>
+                                    <option value="zh">中文</option>
+                                    <option value="en">英文</option>
+                                    <option value="ja">日文</option>
+                                    <option value="ko">韩文</option>
+                                    <option value="fr">法文</option>
+                                    <option value="de">德文</option>
+                                    <option value="es">西班牙文</option>
+                                    <option value="pt">葡萄牙文</option>
+                                    <option value="ru">俄文</option>
+                                </select>
+                            </div>
+
+                            <!-- 视频数量 -->
+                            <div class="form-group">
+                                <label for="videoCount">
+                                    <i class="fas fa-video"></i>
+                                    最少视频数
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="videoCount" 
+                                    name="videoCount" 
+                                    placeholder="如：10"
+                                    min="0"
+                                >
+                            </div>
+
+                            <!-- 最新视频天数 -->
+                            <div class="form-group">
+                                <label for="daysSinceLastVideo">
+                                    <i class="fas fa-calendar"></i>
+                                    最新视频天数
+                                </label>
+                                <select id="daysSinceLastVideo" name="daysSinceLastVideo">
+                                    <option value="">不限</option>
+                                    <option value="7">7天内</option>
+                                    <option value="30">30天内</option>
+                                    <option value="90">90天内</option>
+                                    <option value="180">180天内</option>
+                                    <option value="365">1年内</option>
+                                </select>
+                            </div>
+
+                            <!-- 平均播放量 -->
+                            <div class="form-group">
+                                <label for="avgPlayCount">
+                                    <i class="fas fa-play"></i>
+                                    最少平均播放量
+                                </label>
+                                <input 
+                                    type="number" 
+                                    id="avgPlayCount" 
+                                    name="avgPlayCount" 
+                                    placeholder="如：10000"
+                                    min="0"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- 搜索按钮 -->
+                        <div class="search-actions">
+                            <button type="submit" class="btn-primary btn-large" id="searchBtn">
+                                <i class="fas fa-search"></i>
+                                开始搜索
+                            </button>
+                            <button type="button" class="btn-outline" id="resetBtn">
+                                <i class="fas fa-undo"></i>
+                                重置条件
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索结果区域 -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="container">
+                <!-- 结果统计 -->
+                <div class="results-header">
+                    <div class="results-info">
+                        <h3>搜索结果</h3>
+                        <span class="results-count" id="resultsCount">找到 <span id="countNumber">0</span> 个创作者</span>
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn-outline" id="exportBtn">
+                            <i class="fas fa-download"></i>
+                            导出数据
+                        </button>
+                        <button class="btn-outline" id="sortBtn">
+                            <i class="fas fa-sort"></i>
+                            排序
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 加载状态 -->
+                <div class="loading-container" id="loadingContainer" style="display: none;">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p>正在搜索创作者数据...</p>
+                </div>
+
+                <!-- 结果表格 -->
+                <div class="results-table-container" id="resultsTableContainer">
+                    <div class="table-wrapper">
+                        <table class="results-table" id="resultsTable">
+                            <thead>
+                                <tr>
+                                    <th>创作者信息</th>
+                                    <th>粉丝数据</th>
+                                    <th>视频数据</th>
+                                    <th>最新视频</th>
+                                    <th>联系方式</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsTableBody">
+                                <!-- 数据行将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 分页 -->
+                <div class="pagination" id="pagination">
+                    <button class="pagination-btn" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                        上一页
+                    </button>
+                    <div class="pagination-info">
+                        <span id="currentPage">1</span> / <span id="totalPages">1</span>
+                    </div>
+                    <button class="pagination-btn" id="nextBtn">
+                        下一页
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 空状态 -->
+        <section class="empty-state" id="emptyState" style="display: none;">
+            <div class="container">
+                <div class="empty-content">
+                    <div class="empty-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>开始搜索创作者</h3>
+                    <p>输入关键词并设置筛选条件，找到最适合的创作者合作伙伴</p>
+                    <button class="btn-primary" onclick="scrollToSearch()">
+                        <i class="fas fa-search"></i>
+                        开始搜索
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 创作者详情模态框 -->
+    <div class="creator-modal" id="creatorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>创作者详情</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 详情内容将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-bee"></i>
+                        <span>Beee Media</span>
+                    </div>
+                    <p>AI驱动的增长工作室，让每个品牌都能成为爆款制造者</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="index.html#features">功能特性</a></li>
+                        <li><a href="index.html#products">产品介绍</a></li>
+                        <li><a href="index.html#pricing">定价方案</a></li>
+                        <li><a href="index.html#solutions">行业解决方案</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>公司</h4>
+                    <ul>
+                        <li><a href="index.html#about">关于我们</a></li>
+                        <li><a href="index.html#cases">客户案例</a></li>
+                        <li><a href="index.html#contact">联系我们</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">API文档</a></li>
+                        <li><a href="#">开发者社区</a></li>
+                        <li><a href="#">状态监控</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Beee Media. 保留所有权利。</p>
+                <div class="footer-links">
+                    <a href="#">隐私政策</a>
+                    <a href="#">服务条款</a>
+                    <a href="#">Cookie政策</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI助手悬浮按钮 -->
+    <div class="ai-assistant-fab">
+        <i class="fas fa-robot"></i>
+        <span>Ask Beee</span>
+    </div>
+
+    <script src="creators.js"></script>
+</body>
+</html>

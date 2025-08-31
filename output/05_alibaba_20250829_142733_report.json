@@ -1,0 +1,30 @@
+{
+  "keyword": "alibaba",
+  "collection_time": "2025-08-29T14:27:33.424243",
+  "total_searches": 30,
+  "total_creators": 3,
+  "total_followers": 7518973,
+  "avg_followers": 2506324.3333333335,
+  "total_videos": 1845,
+  "total_likes": 286503212,
+  "avg_play_count": 511575.6666666667,
+  "email_count": 2,
+  "active_creators": 3,
+  "top_creators": [
+    {
+      "nickname": "Alibaba 💫",
+      "unique_id": "alibaba_rcm",
+      "follower_count": 6946175
+    },
+    {
+      "nickname": "Anaita - Sell Anything Online",
+      "unique_id": "sellanythingonline",
+      "follower_count": 336168
+    },
+    {
+      "nickname": "Maureen Nyirenda",
+      "unique_id": "itsmnyirenda",
+      "follower_count": 236630
+    }
+  ]
+}

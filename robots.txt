@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /debug/
+Disallow: /admin/
+Disallow: /api/
+Disallow: *.json
+Disallow: *.log
+
+# Sitemaps
+Sitemap: https://beeemedia.com/sitemap.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 1
+
+# Specific rules for different bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2

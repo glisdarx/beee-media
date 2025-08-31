@@ -1,0 +1,25 @@
+# Cloudflare Pages 配置文件
+
+name = "beee-media"
+compatibility_date = "2024-08-31"
+
+[env.production]
+name = "beee-media"
+routes = [
+  { pattern = "beeemedia.com/*", zone_name = "beeemedia.com" },
+  { pattern = "www.beeemedia.com/*", zone_name = "beeemedia.com" }
+]
+
+[env.production.vars]
+TIKHUB_API_KEY = "w7MRRTtG50I0nQQRwUXvkCUdwyZXk5mI4alf2QvjknZZ4XIzYNAv/kK8AA=="
+
+# 静态文件配置
+[[rules]]
+type = "Static"
+zoneId = "YOUR_ZONE_ID"
+
+# API路由配置
+[[rules]]
+type = "Worker"
+pattern = "beeemedia.com/api/*"
+script = "api-worker"
